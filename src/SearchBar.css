@@ -1,0 +1,13 @@
+.search-bar {
+  margin: auto 25%;
+  margin-top: 20px;
+}
+
+.search-bar .ant-input {
+  border: none;
+}
+
+.ant-input:focus {
+  outline: none;
+  box-shadow: none;
+}

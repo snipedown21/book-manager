@@ -1,0 +1,16 @@
+.book-list-container {
+  border: 2px solid black;
+  width: 50%;
+  margin: auto;
+  margin-top: 5%;
+  padding: 20px;
+  height: 200px;
+  overflow-y: scroll;
+}
+
+.library-header {
+  background-color: #003366;
+  color: white;
+  border-radius: 5px;
+  padding-left: 20px;
+}
