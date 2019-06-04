@@ -1,0 +1,15 @@
+.add-new-button {
+  position: absolute;
+  top: 100px;
+  right: 50px;
+}
+
+.add-new-button:hover {
+  color: #000;
+  border-color: #000;
+}
+
+.add-new-button:focus {
+  color: #000;
+  border-color: #000;
+}
