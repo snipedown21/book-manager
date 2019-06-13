@@ -1,14 +1,41 @@
 import React from 'react';
 import BookItem  from './BookItem';
+import EditBookModal from './modal/EditBookModal';
 import { connect } from 'react-redux';
 import { List } from 'antd';
 import Axios from 'axios';
 import './BookList.css';
 
 class BookList extends React.Component {
-
     state = {
       books: [],
+      editVisible: false,
+      deleteVisible: false,
+      verifiedName: '',
+      id: '',
+      name: '',
+      bookmark: '',
+      visible: false,
+    };
+
+    handleInput = (prop, event) => {
+      const { value } = event.target;
+      this.setState({ [prop]: value });
+    };
+
+    handleEditDialog = (e, id ,name, bookmark) => {
+      this.setState({ editVisible: true, id, name, bookmark });
+    };
+
+    handleCancel = () => {
+      this.setState({
+        editVisible: false,
+        deleteVisible: false,
+        verifiedName: '',
+        id: '',
+        name: '',
+        bookmark: '',
+      });
     };
 
   componentDidMount() {
@@ -25,11 +52,21 @@ class BookList extends React.Component {
       dataSource={this.state.books.filter(item =>item.name.toLowerCase().includes(this.props.searchTerm.toLowerCase()))}
       renderItem={item => <BookItem
         key={item.key}
+        id={item.key}
         name={item.name}
         bookmark={item.bookmark}
+        handleEditDialog={this.handleEditDialog}
         />}
       >
       </List>
+      <EditBookModal
+        visible={this.state.editVisible}
+        id={this.state.id}
+        name={this.state.name}
+        bookmark={this.state.bookmark}
+        handleInput={this.handleInput}
+        handleCancel={this.handleCancel}
+      />
       </div>
     );
   }

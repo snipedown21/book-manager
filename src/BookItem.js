@@ -4,7 +4,17 @@ import 'antd/dist/antd.css';
 
 const BookItem = (props) => {
   return (
-    <List.Item actions={[<Icon type="edit" theme="twoTone" />, <Icon type="delete" theme="twoTone" />]}>
+    <List.Item actions={[
+          <Icon
+            type="edit"
+            theme="twoTone"
+            onClick={(e) => props.handleEditDialog(e, props.id, props.name, props.bookmark)}
+          />,
+          <Icon
+            type="delete"
+            theme="twoTone"
+          />
+            ]}>
       <List.Item.Meta
         title={<div><b>{props.name}</b></div>}
       />
