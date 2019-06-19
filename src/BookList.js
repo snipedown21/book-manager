@@ -1,6 +1,7 @@
 import React from 'react';
 import BookItem  from './BookItem';
 import EditBookModal from './modal/EditBookModal';
+import DeleteBookModal from './modal/DeleteBookModal';
 import { connect } from 'react-redux';
 import { List } from 'antd';
 import Axios from 'axios';
@@ -26,6 +27,10 @@ class BookList extends React.Component {
     handleEditDialog = (e, id ,name, bookmark) => {
       this.setState({ editVisible: true, id, name, bookmark });
     };
+
+    handleDeleteDialog = (e, id, name) => {
+      this.setState({ deleteVisible: true, id, verifiedName: name });
+    }
 
     handleCancel = () => {
       this.setState({
@@ -56,6 +61,7 @@ class BookList extends React.Component {
         name={item.name}
         bookmark={item.bookmark}
         handleEditDialog={this.handleEditDialog}
+        handleDeleteDialog={this.handleDeleteDialog}
         />}
       >
       </List>
@@ -67,6 +73,14 @@ class BookList extends React.Component {
         handleInput={this.handleInput}
         handleCancel={this.handleCancel}
       />
+      <DeleteBookModal
+        visible={this.state.deleteVisible}
+        id={this.state.id}
+        inputName={this.state.inputName}
+        verifiedName={this.state.verifiedName}
+        books={this.state.books}
+        handleInput={this.handleInput}
+        handleCancel={this.handleCancel} />
       </div>
     );
   }

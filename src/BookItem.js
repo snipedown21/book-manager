@@ -13,6 +13,8 @@ const BookItem = (props) => {
           <Icon
             type="delete"
             theme="twoTone"
+            twoToneColor="#d9534f"
+            onClick={(e) => props.handleDeleteDialog(e, props.id, props.name)}
           />
             ]}>
       <List.Item.Meta
